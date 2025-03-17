@@ -1,6 +1,7 @@
 '''
 https://github.com/fidcz/xxtea-python/blob/main/xxtea.py
 '''
+
 import re
 
 if hasattr(re, 'findall'):
@@ -414,3 +415,4 @@ def run():
     b = decryptFromBase64(a, 'password')
     print(b)
     print(enString == b)
+

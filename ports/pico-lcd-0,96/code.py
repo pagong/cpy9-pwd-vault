@@ -1,13 +1,14 @@
 '''
 PasswordVault
 - in CircuitPython
-- on Raspberry Pi Pico2 W
-- with Waveshare 1.44 screen with four buttons
+- on Raspberry Pi Pico
+- with Waveshare 0.96 screen with two buttons and joystick
 
 https://passwordvault.de
 
-(c)2025 Olav Schettler <olav@schettler.net
+(c) 2025 Olav Schettler <olav@schettler.net
 '''
+
 from adafruit_hid.keyboard import Keyboard
 from keyboard_layout_win_de import KeyboardLayout
 import dbase
@@ -20,7 +21,7 @@ import random
 import time
 import xxtea
 
-PV_VERSION = "2.1"
+PV_VERSION = "2.1-msd"
 NAME_KEYS = "abcdefghijklmnopqrstuvwxyz0123<456789/->"
 
 app = None

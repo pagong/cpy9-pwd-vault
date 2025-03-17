@@ -1,7 +1,8 @@
 '''
-Use a Waveshare Pico-LCD-1.44
-@see https://www.waveshare.com/wiki/Pico-LCD-1.44
+Use a Waveshare Pico-LCD-0.96
+@see https://www.waveshare.com/wiki/Pico-LCD-0.96
 '''
+
 from adafruit_bus_device.spi_device import SPIDevice
 from adafruit_st7735r import ST7735R
 import board
@@ -23,6 +24,7 @@ DC = board.GP8
 RESET = board.GP12
 BL = board.GP13
 
+
 class Display(ST7735R):
     BLACK  = 0x000000
     GRAY   = 0x808080
@@ -38,17 +40,17 @@ class Display(ST7735R):
         self.bl.value = False
         display_bus = fourwire.FourWire(spi, command=DC, chip_select=CS, reset=RESET)
         super().__init__(display_bus,
-                          width=128, height=128,
+                          width=160, height=80,
                           colstart=2, rowstart=3,
-                          rotation=270)
+                          rotation=90)
         self.bl.value = True
     
     def config_buttons(self):
         self.pins = [
-            digitalio.DigitalInOut(board.GP15),
-            digitalio.DigitalInOut(board.GP17),
-            digitalio.DigitalInOut(board.GP2),
-            digitalio.DigitalInOut(board.GP3)
+            digitalio.DigitalInOut(board.GP15),    # user key A
+            digitalio.DigitalInOut(board.GP17),    # user key B
+            digitalio.DigitalInOut(board.GP2),     # joystick up
+            digitalio.DigitalInOut(board.GP3)      # joystick center
         ]
         for pin in self.pins:
             pin.switch_to_input(digitalio.Pull.UP)
